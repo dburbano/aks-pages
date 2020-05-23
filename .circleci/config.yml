@@ -15,28 +15,28 @@ jobs:
                 resource-group: Ubuntu
             - run:
                 command: kubectl delete configmap app1-page --namespace ingress-basic
-                name: Deleted last configmap
+                name: Eliminar configmap
             - run:
                 command: kubectl delete configmap app2-page --namespace ingress-basic
-                name: Deleted last configmap
+                name: Eliminar configmap
             - run:
                 command: kubectl create configmap app1-page --from-file=app-1/ --namespace ingress-basic
-                name: Deleted update configmap
+                name: actualizar configmap
             - run:
                 command: kubectl create configmap app2-page --from-file=app-2/ --namespace ingress-basic
-                name: Deleted update configmap
+                name: actualizar configmap
             - run:
                 command: kubectl scale --replicas=0 deployment web1 --namespace ingress-basic
-                name: Remove all the replicas
+                name: Eliminar todas las replicas
             - run:
                 command: kubectl scale --replicas=2 deployment web1 --namespace ingress-basic
-                name: Restart the replicas
+                name: Reiniciar las réplicas
             - run:
                 command: kubectl scale --replicas=0 deployment web2 --namespace ingress-basic
-                name: Remove all the replicas
+                name: Eliminar todas las replicas
             - run:
                 command: kubectl scale --replicas=2 deployment web2 --namespace ingress-basic
-                name: Restart the replicas
+                name: Reiniciar las réplicas
     approval-job:
     prod-deploy:
         executor: azure-aks/azure-docker
@@ -51,28 +51,28 @@ jobs:
                 resource-group: Produc
             - run:
                 command: kubectl delete configmap app1-page --namespace ingress-basic
-                name: Deleted last configmap
+                name: Eliminar configmap
             - run:
                 command: kubectl delete configmap app2-page --namespace ingress-basic
-                name: Deleted last configmap
+                name: Eliminar configmap
             - run:
                 command: kubectl create configmap app1-page --from-file=app-1/ --namespace ingress-basic
-                name: Deleted update configmap
+                name: actualizar configmap
             - run:
                 command: kubectl create configmap app2-page --from-file=app-2/ --namespace ingress-basic
-                name: Deleted update configmap
+                name: actualizar configmap
             - run:
                 command: kubectl scale --replicas=0 deployment web1 --namespace ingress-basic
-                name: Remove all the replicas
+                name: Eliminar todas las replicas
             - run:
                 command: kubectl scale --replicas=1 deployment web1 --namespace ingress-basic
-                name: Restart the replicas
+                name: Reiniciar las réplicas
             - run:
                 command: kubectl scale --replicas=0 deployment web2 --namespace ingress-basic
-                name: Remove all the replicas
+                name: Eliminar todas las replicas
             - run:
                 command: kubectl scale --replicas=1 deployment web2 --namespace ingress-basic
-                name: Restart the replicas
+                name: Reiniciar las réplicas
 workflows:
     build-and-test:
       jobs:
