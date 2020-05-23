@@ -26,10 +26,16 @@ jobs:
                 command: kubectl create configmap app2-page --from-file=app-2/ --namespace ingress-basic
                 name: Deleted update configmap
             - run:
-                command: kubectl scale --replicas=0 deployment app1 --namespace ingress-basic
+                command: kubectl scale --replicas=0 deployment web1 --namespace ingress-basic
                 name: Remove all the replicas
             - run:
-                command: kubectl scale --replicas=2 deployment app1 --namespace ingress-basic
+                command: kubectl scale --replicas=2 deployment web1 --namespace ingress-basic
+                name: Restart the replicas
+            - run:
+                command: kubectl scale --replicas=0 deployment web2 --namespace ingress-basic
+                name: Remove all the replicas
+            - run:
+                command: kubectl scale --replicas=2 deployment web2 --namespace ingress-basic
                 name: Restart the replicas
     approval-job:
     login-and-production-deploy:
@@ -56,10 +62,16 @@ jobs:
                 command: kubectl create configmap app2-page --from-file=app-2/ --namespace ingress-basic
                 name: Deleted update configmap
             - run:
-                command: kubectl scale --replicas=0 deployment app1 --namespace ingress-basic
+                command: kubectl scale --replicas=0 deployment web1 --namespace ingress-basic
                 name: Remove all the replicas
             - run:
-                command: kubectl scale --replicas=1 deployment app1 --namespace ingress-basic
+                command: kubectl scale --replicas=1 deployment web1 --namespace ingress-basic
+                name: Restart the replicas
+            - run:
+                command: kubectl scale --replicas=0 deployment web2 --namespace ingress-basic
+                name: Remove all the replicas
+            - run:
+                command: kubectl scale --replicas=1 deployment web2 --namespace ingress-basic
                 name: Restart the replicas
 workflows:
     build-and-test:
