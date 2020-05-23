@@ -76,7 +76,7 @@ jobs:
 workflows:
     build-and-test:
       jobs:
-        - dev-deploy:
+        - dev-deploy
         - approval-job:
             type: approval
             requires:
