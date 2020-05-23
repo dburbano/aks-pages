@@ -20,10 +20,10 @@ jobs:
                 command: kubectl delete configmap app2-page --namespace ingress-basic
                 name: Deleted last configmap
             - run:
-                command: kubectl create configmap app1-page --from-file=app1/ --namespace ingress-basic
+                command: kubectl create configmap app1-page --from-file=app-1/ --namespace ingress-basic
                 name: Deleted update configmap
             - run:
-                command: kubectl create configmap app2-page --from-file=app2/ --namespace ingress-basic
+                command: kubectl create configmap app2-page --from-file=app-2/ --namespace ingress-basic
                 name: Deleted update configmap
             - run:
                 command: kubectl scale --replicas=0 deployment app1 --namespace ingress-basic
@@ -50,10 +50,10 @@ jobs:
                 command: kubectl delete configmap app2-page --namespace ingress-basic
                 name: Deleted last configmap
             - run:
-                command: kubectl create configmap app1-page --from-file=app1/ --namespace ingress-basic
+                command: kubectl create configmap app1-page --from-file=app-1/ --namespace ingress-basic
                 name: Deleted update configmap
             - run:
-                command: kubectl create configmap app2-page --from-file=app2/ --namespace ingress-basic
+                command: kubectl create configmap app2-page --from-file=app-2/ --namespace ingress-basic
                 name: Deleted update configmap
             - run:
                 command: kubectl scale --replicas=0 deployment app1 --namespace ingress-basic
